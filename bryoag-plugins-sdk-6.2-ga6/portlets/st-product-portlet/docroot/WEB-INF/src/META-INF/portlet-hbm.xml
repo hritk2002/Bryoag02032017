@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.skilltailor.shopping.product.model.Product" />
+	<import class="com.skilltailor.shopping.product.model.ProductParts" />
+	<class name="com.skilltailor.shopping.product.model.impl.ProductImpl" table="skilltailor_Product">
+		<cache usage="read-write" />
+		<id name="productId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="categoryId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="sku" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="productName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="basicCost" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="shippingCost" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="totalQuantity" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="minQuantity" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="maxQuantity" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="taxable" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="stockChecking" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="discount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="imageId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="com.skilltailor.shopping.product.model.impl.ProductPartsImpl" table="skilltailor_ProductParts">
+		<cache usage="read-write" />
+		<id name="partId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="productId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="values" type="com.liferay.portal.dao.orm.hibernate.StringType" column="values_" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="hasAdditionalCost" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="additionalCost" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="isCommon" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="sequence" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="tagName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="compatibleTag" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

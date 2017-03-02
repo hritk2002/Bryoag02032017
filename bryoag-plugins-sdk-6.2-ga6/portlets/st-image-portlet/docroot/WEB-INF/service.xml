@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.bryoag.shopping.image">
+	<author>deepakgupta02</author>
+	<namespace>skilltailor</namespace>
+
+	<entity name="Image" local-service="true" remote-service="true" json-enabled="true">
+
+		<!-- PK fields -->
+
+		<column name="imageId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="assetId" type="long" />
+		<column name="assetType" type="String" />
+			
+		<column name="smallImagePath" type="String" />
+		
+		<column name="mediumImagePath" type="String" />
+		
+		<column name="largeImagePath" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="imageId" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		
+		<finder name="AssetId" return-type="Collection">
+			<finder-column name="assetId" />
+		</finder>
+		
+		<finder name="AssetType" return-type="Collection">
+			<finder-column name="assetType" />
+		</finder>
+		
+			<finder name="AssetIdType" return-type="Collection">
+			<finder-column name="assetId" />
+			<finder-column name="assetType" />
+		</finder>
+		
+		<finder name="Id" return-type="Image">
+			<finder-column name="imageId" />
+		</finder>
+		
+		<finder name="C_G" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+		</finder>
+		
+			
+	</entity>
+</service-builder>

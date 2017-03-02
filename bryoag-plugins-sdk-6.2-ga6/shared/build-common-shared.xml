@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<project name="build-common-shared" xmlns:antelope="antlib:ise.antelope.tasks">
+	<import file="../build-common-plugin.xml"  />
+
+	<target name="jar">
+		<jar-macro
+			module.dir="${basedir}"
+		/>
+		
+		<for list="${list.copied}" param="param">
+	       <sequential>
+			<if>
+				<antelope:endswith string="@{param}" with="portlet" />
+			<then>
+			 <copy todir="${sdk.dir}/portlet/@{param}/docroot/WEB-INF/lib/">
+				<fileset dir="${sdk.dir}/dist" includes="*st-utility-6.2.0.1.jar" />
+			 </copy>
+			</then>
+			<else>
+			 <copy todir="${sdk.dir}/portlet/@{param}/docroot/WEB-INF/lib/">
+	       	    <fileset dir="${sdk.dir}/dist" includes="*st-utility-6.2.0.1.jar" />
+	       	</copy>
+			</else>
+			</if> 
+		 </sequential>
+	      </for>
+		
+	</target>
+</project>

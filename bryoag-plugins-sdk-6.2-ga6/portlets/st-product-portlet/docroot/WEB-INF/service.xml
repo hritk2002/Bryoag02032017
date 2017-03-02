@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.skilltailor.shopping.product">
+	<author>deepakgupta02</author>
+	<namespace>skilltailor</namespace>
+
+	<entity name="Product" local-service="true" remote-service="true" json-enabled="true">
+
+		<!-- PK fields -->
+
+		<column name="productId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="categoryId" type="long"/>
+		<column name="sku" type="String" />
+		<column name="productName" type="String"/>
+		<column name="description" type="String"/>
+		<column name="basicCost" type="int" />
+		<column name="shippingCost" type="int" />
+		<column name="totalQuantity" type="int" />
+		<column name="minQuantity" type="int" />
+		<column name="maxQuantity" type="int" />
+		<column name="taxable" type="Boolean" />
+		<column name="stockChecking" type="Boolean" />
+		<column name="discount" type="double"></column>
+		<column name="imageId" type="long"></column>
+		
+
+		<!-- Order -->
+  		<order by="asc">
+			<order-column name="sku" />
+		</order>
+
+		<!-- Finder methods -->
+
+				<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		
+		<finder name="Category" return-type="Collection">
+			<finder-column name="categoryId" />
+		</finder>
+		
+		<finder name="ProductId" return-type="product">
+			<finder-column name="productId" />
+		</finder>
+		
+		<finder name="sku" return-type="product">
+			<finder-column name="sku" />
+		</finder>
+		
+		<finder name="CompanySku" return-type="product">
+			<finder-column name="sku" />
+			<finder-column name="companyId" />
+		</finder>
+		
+		<finder name="C_G" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+		</finder>
+		
+		<finder name="discount" return-type="Collection">
+			<finder-column name="discount" />
+		</finder>
+	</entity>
+	
+	<entity name="ProductParts" local-service="true" remote-service="true" json-enabled="true" >
+	
+	<column name="partId" type="long"  primary="true"  ></column>
+	<column name="productId" type="long"></column>
+	<column name="name" type="String"></column>
+	<column name="values" type="String"></column>
+	<column name="description" type="String"/>
+	<column name="hasAdditionalCost" type="Boolean"/>
+	<column name="additionalCost" type="int"></column>
+	<column name="isCommon" type="Boolean"></column>
+	<column name="sequence" type="int"></column>
+	<column name="tagName" type="String"></column>
+	<column name="compatibleTag" type="String"></column>
+	
+		<finder name="ProductId" return-type="Collection">
+			<finder-column name="productId" />
+		</finder>
+		
+		<finder name="ProductCompatibility" return-type="Collection">
+			<finder-column name="productId" />
+			<finder-column name="compatibleTag" />
+		</finder>
+		
+		<finder name="ProductTag" return-type="ProductParts">
+			<finder-column name="productId" />
+			<finder-column name="tagName" />
+		</finder>
+		
+		<finder name="ProductName" return-type="ProductParts">
+			<finder-column name="productId" />
+			<finder-column name="name" />
+		</finder>
+		
+		<finder name="Common" return-type="Collection">
+			<finder-column name="isCommon" />
+		</finder>
+		
+		<finder name="Name" return-type="Collection">
+			<finder-column name="name" />
+		</finder>
+		
+		<finder name="TagName" return-type="Collection">
+			<finder-column name="tagName" />
+		</finder>
+		
+		<finder name="CompatibleTag" return-type="Collection">
+			<finder-column name="compatibleTag" />
+		</finder>
+		
+		<finder name="PartId" return-type="productParts">
+			<finder-column name="partId" />
+		</finder>
+	
+	
+	</entity>
+
+</service-builder>

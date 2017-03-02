@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.skilltailor.shopping.product.service.ProductLocalService" class="com.skilltailor.shopping.product.service.impl.ProductLocalServiceImpl" />
+	<bean id="com.skilltailor.shopping.product.service.ProductService" class="com.skilltailor.shopping.product.service.impl.ProductServiceImpl" />
+	<bean id="com.skilltailor.shopping.product.service.persistence.ProductPersistence" class="com.skilltailor.shopping.product.service.persistence.ProductPersistenceImpl" parent="basePersistence" />
+	<bean id="com.skilltailor.shopping.product.service.ProductPartsLocalService" class="com.skilltailor.shopping.product.service.impl.ProductPartsLocalServiceImpl" />
+	<bean id="com.skilltailor.shopping.product.service.ProductPartsService" class="com.skilltailor.shopping.product.service.impl.ProductPartsServiceImpl" />
+	<bean id="com.skilltailor.shopping.product.service.persistence.ProductPartsPersistence" class="com.skilltailor.shopping.product.service.persistence.ProductPartsPersistenceImpl" parent="basePersistence" />
+</beans>
